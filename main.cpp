@@ -4,44 +4,34 @@ constexpr int N_ELEMENTS = 100;
 
 int main()
 {
-    int *b = new int[NELEMENTS]; 
-    // HIBA: NELEMENTS nincs deklarálva, a helyes konstans neve N_ELEMENTS lenne.
+    int *b = new int[N_ELEMENTS];
 
-    std::cout << '1-100 ertekek duplazasa'
-    // HIBA: hiányzik a pontosvessző a sor végéről.
-    // HIBA: egyszeres idézőjel karakter literált jelent, nem stringet → "" kellene.
+    std::cout << "1-100 ertekek duplazasa";
 
-    for (int i = 0;)
-    // HIBA: a for ciklus feltétele és léptetése hiányzik (szintaktikai hiba).
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
         b[i] = i * 2;
-        // HIBA: i soha nem változik → végtelen ciklus lenne.
-        // HIBA: nincs határellenőrzés (pl. i < N_ELEMENTS).
     }
 
-    for (int i = 0; i; i++)
-    // HIBA: a feltétel hibás (i önmagában), így a ciklus nem fog lefutni.
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
-        std::cout << "Ertek:"
-        // HIBA: hiányzik a pontosvessző.
-        // HIBA: nem írja ki b[i] értékét.
+        std::cout << "Ertek: " << b[i] << std::endl;
     }    
 
     std::cout << "Atlag szamitasa: " << std::endl;
 
-    int atlag;
-    // HIBA: az atlag változó nincs inicializálva (szemét értékről indul).
+    int atlag = 0;
 
-    for (int i = 0; i < N_ELEMENTS, i++)
-    // HIBA: vessző van pontosvessző helyett a feltétel után.
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
-        atlag += b[i]
-        // HIBA: hiányzik a pontosvessző.
+        atlag += b[i];
     }
 
     atlag /= N_ELEMENTS;
 
     std::cout << "Atlag: " << atlag << std::endl;
+
+    delete[] b;
 
     return 0;
 }
