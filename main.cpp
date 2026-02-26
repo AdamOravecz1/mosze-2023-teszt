@@ -33,5 +33,7 @@ int main()
 
     delete[] b;
 
+    std::cout << "A kutya eszik";
+
     return 0;
 }
